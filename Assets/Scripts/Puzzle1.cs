@@ -7,7 +7,7 @@ public class Puzzle1 : MonoBehaviour
     char[][] Board = new char[12][];
     char[][] StartBoard = new char[12][];
     char[][] walls = new char[23][];
-    char[][][] Map = new char[2][][];
+    public char[][][] Map = new char[2][][];
     // 6 tiles and 3 walls for now, tiles being spikes of both colours and neutral, and a victory point for each, and empty ofc
     public GameObject[] Tiles = new GameObject[6];
     // the 4 walls being both colours, neutral and empty
