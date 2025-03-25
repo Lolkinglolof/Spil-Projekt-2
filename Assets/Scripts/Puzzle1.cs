@@ -7,6 +7,7 @@ public class Puzzle1 : MonoBehaviour
     char[][] Board = new char[12][];
     char[][] StartBoard = new char[12][];
     char[][] walls = new char[23][];
+    char[][][] Map = new char[2][][];
     // 6 tiles and 3 walls for now, tiles being spikes of both colours and neutral, and a victory point for each, and empty ofc
     public GameObject[] Tiles = new GameObject[6];
     // the 4 walls being both colours, neutral and empty
@@ -19,6 +20,8 @@ public class Puzzle1 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Map[0] = Board;
+        Map[1] = walls;
         start = true;
         // sets up the initial board, this is for test reasons
         for (int i = 0; i < StartBoard.Length; i++)
@@ -45,7 +48,7 @@ public class Puzzle1 : MonoBehaviour
             {
                 column[j] = 'E';
             }
-            walls[i] = column;
+            Map[1][i] = column;
         }
         // for now it's all empty
     }
@@ -57,7 +60,8 @@ public class Puzzle1 : MonoBehaviour
         if (start)
         {
             RestartPuzzle();
-            CreateBoard();
+            CreateBoard(Map);
+            start = false;
         }
     }
     /// <summary>
@@ -66,18 +70,20 @@ public class Puzzle1 : MonoBehaviour
     private void RestartPuzzle()
     {
         //sets the board to the original state
-        Board = StartBoard;
+        Map[0] = StartBoard;
         return;
     }
     /// <summary>
-    /// Instantiates the board, please don't touch anything inside, it works. just change how the board, then run this
+    /// Instantiates the board, please don't touch anything inside, it works. just change the board, then run this
     /// </summary>
-    private void CreateBoard()
+    private void CreateBoard(char[][][] M)
     {
-        float x = Board.Length * -0.6f;
-        foreach (char[] col in Board)
+        char[][] B = M[0];
+        char[][] W = M[1];
+        float x = B.Length * -0.6f;
+        foreach (char[] col in B)
         {
-            float y = Board[0].Length * 0.6f;
+            float y = B[0].Length * 0.6f;
             foreach (char c in col)
             {
                 for (int i = 0; i < TileCode.Length; i++)
@@ -91,11 +97,11 @@ public class Puzzle1 : MonoBehaviour
             }
             x += 1.2f;
         }
-        x = Board.Length * -0.6f;
+        x = B.Length * -0.6f;
 
-        foreach (char[] col in walls)
+        foreach (char[] col in W)
         {
-            float y = Board[0].Length * 0.6f;
+            float y = B[0].Length * 0.6f;
             float Wy;
 
             Quaternion rotaion;
