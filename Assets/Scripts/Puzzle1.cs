@@ -89,7 +89,7 @@ public class Puzzle1 : MonoBehaviour
                 {
                     if (c == TileCode[i])
                     {
-                        Instantiate(Tiles[i],new Vector3(x,y,0),Quaternion.identity);
+                        Instantiate(Tiles[i], new Vector3(x, y, 0), Quaternion.identity);
                     }
                 }
                 y -= 1.2f;
@@ -102,29 +102,29 @@ public class Puzzle1 : MonoBehaviour
         {
             float y = Board[0].Length * 0.6f;
             float Wy;
-            
+
             Quaternion rotaion;
             if (col.Length % 2 == 0)
             {
-                rotaion = quaternion.Euler(0,90,0);
-                
+                rotaion = quaternion.Euler(0, 90, 0);
+
                 Wy = y - 0.6f;
             }
             else
             {
-                rotaion= Quaternion.identity;
+                rotaion = Quaternion.identity;
                 Wy = y;
             }
             foreach (char c in col)
             {
                 if (col.Length % 2 == 0)
                 {
-                    rotaion = Quaternion.Euler(new Vector3(0,90,0));
+                    rotaion = Quaternion.Euler(new Vector3(0, 0, 0));
                     Wy = y;
                 }
                 else
                 {
-                    rotaion = Quaternion.Euler(new Vector3(90, 90, 0));
+                    rotaion = Quaternion.Euler(new Vector3(0, 0, 90));
                     Wy = y - 0.6f;
                 }
                 for (int i = 0; i < WallCode.Length; i++)
