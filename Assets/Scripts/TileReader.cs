@@ -8,8 +8,13 @@ public class TileReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Read();
         Map = Controller.GetComponent<Puzzle1>().Map;
     }
+    /// <summary>
+    /// finds all empty tiles on the current board
+    /// </summary>
+    /// <returns>An array of all empty tiles on the board</returns>
     Vector2[] Read()
     {
         List<Vector2> EmptyTiles = new List<Vector2>();
