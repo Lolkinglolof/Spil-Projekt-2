@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class cubemovement : MonoBehaviour
 {
+    public GameObject othercube;
     public float speed = 1.2f;
     public bool color;
     public float upperbound = 4.8f;
@@ -11,7 +12,11 @@ public class cubemovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (color)
+        {
+            othercube = GameObject.FindWithTag("RedCube");
+        }
+        else othercube = GameObject.FindWithTag("BlueCube");
     }
 
     // Update is called once per frame

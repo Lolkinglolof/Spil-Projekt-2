@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 78544947}
   m_Layer: 0
   m_Name: Cube (Blue)
-  m_TagString: Untagged
+  m_TagString: BlueCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,8 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dce8128fc0887040bac90ec8eda52bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  othercube: {fileID: 0}
   speed: 1.2
-  color: 0
+  color: 1
+  upperbound: 4.8
+  lowerbound: -3.6
+  rightbound: 6
+  leftbound: -7.2
 --- !u!65 &78544948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -502,7 +507,7 @@ GameObject:
   - component: {fileID: 1158633533}
   m_Layer: 0
   m_Name: Cube (Red)
-  m_TagString: Untagged
+  m_TagString: RedCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,8 +524,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dce8128fc0887040bac90ec8eda52bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  othercube: {fileID: 0}
   speed: 1.2
   color: 0
+  upperbound: 4.8
+  lowerbound: -3.6
+  rightbound: 6
+  leftbound: -7.2
 --- !u!65 &1158633534
 BoxCollider:
   m_ObjectHideFlags: 0
