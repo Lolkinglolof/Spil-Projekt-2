@@ -42,7 +42,7 @@ public class Puzzle1 : MonoBehaviour
             }
             for (int j = 0; j < column.Length; j++)
             {
-                column[j] = 'N';
+                column[j] = 'E';
             }
             walls[i] = column;
         }
@@ -131,7 +131,7 @@ public class Puzzle1 : MonoBehaviour
                 {
                     if (c == WallCode[i])
                     {
-                        Instantiate(Wall[i], new Vector3(x, Wy, 0), rotaion);
+                        Instantiate(Wall[i], new Vector3(x, Wy, -1), rotaion);
                     }
                 }
                 y -= 1.2f;
