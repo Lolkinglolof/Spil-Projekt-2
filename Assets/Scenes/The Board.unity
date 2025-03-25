@@ -157,11 +157,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   othercube: {fileID: 0}
   speed: 1.2
-  color: 1
+  bluecolor: 1
   upperbound: 4.8
   lowerbound: -3.6
   rightbound: 6
   leftbound: -7.2
+  movementfailed: 0
 --- !u!65 &78544948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -526,11 +527,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   othercube: {fileID: 0}
   speed: 1.2
-  color: 0
+  bluecolor: 0
   upperbound: 4.8
   lowerbound: -3.6
   rightbound: 6
   leftbound: -7.2
+  movementfailed: 0
 --- !u!65 &1158633534
 BoxCollider:
   m_ObjectHideFlags: 0
