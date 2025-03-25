@@ -9,6 +9,7 @@ public class cubemovement : MonoBehaviour
     public float lowerbound = -3.6f;
     public float rightbound = 6;
     public float leftbound = -7.2f;
+    public bool movementfailed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,12 +23,21 @@ public class cubemovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movementfailed = false;
         //moving left
         if (transform.position.x > leftbound)
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                transform.position = transform.position + new Vector3(-speed, 0, 0);
+                if (transform.position + new Vector3(-speed, 0, 0) != othercube.transform.position)
+                {
+                    if (othercube.GetComponent<cubemovement>().movementfailed)
+                    {
+                        othercube.transform.position = transform.position;
+                    }
+                    transform.position = transform.position + new Vector3(-speed, 0, 0);
+                }
+                else movementfailed = true;
             }
         }
         //moving right
@@ -35,7 +45,16 @@ public class cubemovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                transform.position = transform.position + new Vector3(speed, 0, 0);
+                
+                if (transform.position + new Vector3(speed, 0, 0) != othercube.transform.position)
+                {
+                    if (othercube.GetComponent<cubemovement>().movementfailed)
+                    {
+                        othercube.transform.position = transform.position;
+                    }
+                    transform.position = transform.position + new Vector3(speed, 0, 0);
+                }
+                else movementfailed = true;
             }
         }
        //moving down
@@ -43,7 +62,16 @@ public class cubemovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                transform.position = transform.position + new Vector3(0, -speed, 0);
+                if (transform.position + new Vector3(0, -speed, 0) != othercube.transform.position)
+                {
+                    if (othercube.GetComponent<cubemovement>().movementfailed)
+                    {
+                        othercube.transform.position = transform.position;
+
+                    }
+                    transform.position = transform.position + new Vector3(0, -speed, 0);
+                }
+                else movementfailed = true;
             }
         }
         //moving up
@@ -51,7 +79,16 @@ public class cubemovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                transform.position = transform.position + new Vector3(0, speed, 0);
+                if (transform.position + new Vector3(0, speed, 0) != othercube.transform.position)
+                {
+                    if (othercube.GetComponent<cubemovement>().movementfailed)
+                    {
+                        othercube.transform.position = transform.position;
+
+                    }
+                    transform.position = transform.position + new Vector3(0, speed, 0);
+                }
+                else movementfailed = true;
             }
         }
     }
