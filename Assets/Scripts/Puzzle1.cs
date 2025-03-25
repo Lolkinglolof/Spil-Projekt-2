@@ -19,6 +19,7 @@ public class Puzzle1 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        start = true;
         // sets up the initial board, this is for test reasons
         for (int i = 0; i < StartBoard.Length; i++)
         {
@@ -52,17 +53,11 @@ public class Puzzle1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // temporary way to start the puzzle
-        if (Input.GetKeyDown(KeyCode.E))
+        
+        if (start)
         {
             RestartPuzzle();
             CreateBoard();
-            start = true;
-        }
-        // the reason i have split this up is because it will be easier to make another script set start to true and thereby start this script
-        if (start)
-        {
-
         }
     }
     /// <summary>
