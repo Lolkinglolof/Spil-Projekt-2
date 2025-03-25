@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class cubemovement : MonoBehaviour
 {
-    public float speed = 0.01f;
+    public float speed = 1.2f;
     public bool color;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,11 +23,11 @@ public class cubemovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.position = transform.position + new Vector3(0, 0, -speed);
+            transform.position = transform.position + new Vector3(0, -speed,0);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.position = transform.position + new Vector3(0, 0, speed);
+            transform.position = transform.position + new Vector3(0, speed, 0);
         }
 
     }
