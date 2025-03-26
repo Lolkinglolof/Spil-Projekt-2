@@ -57,7 +57,6 @@ public class cubemovement : MonoBehaviour
     {
         if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")))
         {
-            Debug.Log(mask + " detected");
             //checks if the other cube is blocking the movement
             //runs if it didn't
             if (transform.position + movement != othercube.transform.position)
