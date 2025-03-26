@@ -52,11 +52,10 @@ public class Puzzle1 : MonoBehaviour
         }
         // for now it's all empty
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+
         if (start)
         {
             RestartPuzzle();
