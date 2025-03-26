@@ -13,6 +13,7 @@ public class cubemovement : MonoBehaviour
     public float leftbound = -7.2f;
     public bool movementfailed;
     public LayerMask mask;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,9 +56,9 @@ public class cubemovement : MonoBehaviour
     }
     void MoveCube(Vector3 movement)
     {
+        //checks if the movement is blocked by any walls
         if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")))
         {
-            Debug.Log("Not blocked by wall");
             //checks if the other cube is blocking the movement
             //runs if it didn't
             if (transform.position + movement != othercube.transform.position)
@@ -74,6 +75,5 @@ public class cubemovement : MonoBehaviour
             }
             else movementfailed = true;
         }
-        else Debug.Log("blocked by wall");
     }
 }
