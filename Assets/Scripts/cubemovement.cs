@@ -10,6 +10,7 @@ public class cubemovement : MonoBehaviour
     public float rightbound = 6;
     public float leftbound = -7.2f;
     public bool movementfailed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,34 +25,32 @@ public class cubemovement : MonoBehaviour
     void Update()
     {
         movementfailed = false;
-        //moving left
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (transform.position.x > leftbound)
                     MoveCube(new Vector3(-speed, 0, 0));
             }
-        //moving right
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (transform.position.x < rightbound)
                     MoveCube(new Vector3(speed, 0, 0));
             }
-       //moving down
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (transform.position.y > lowerbound)
                     MoveCube(new Vector3(0, -speed, 0));
-            }
-        //moving up            
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            }            
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (transform.position.y < upperbound)
                     MoveCube(new Vector3(0, speed, 0));
             }
     }
+
     void MoveCube(Vector3 movement)
     {
         //checks if the other cube is blocking the movement
+        //runs if it didn't
         if (transform.position + movement != othercube.transform.position)
         {
             //moves the other cube if it got blocked by this one
