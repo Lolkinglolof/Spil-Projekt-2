@@ -8,6 +8,8 @@ TagManager:
   - BlueCube
   - BlueGoal
   - RedGoal
+  - RedSpawn
+  - BlueSpawn
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - RedWall
   - BlueWall
   - NeutralWall
-  - 
-  - 
+  - RedSpike
+  - BlueSpike
   - 
   - 
   - 

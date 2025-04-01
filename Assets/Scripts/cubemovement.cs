@@ -1,5 +1,6 @@
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class cubemovement : MonoBehaviour
@@ -12,27 +13,36 @@ public class cubemovement : MonoBehaviour
     public float rightbound = 6;
     public float leftbound = -7.2f;
     public bool movementfailed;
+    public bool DontMove;
     public LayerMask mask;
+    public LayerMask spike;
+    public GameObject spawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (bluecolor)
         {
+            spawn = GameObject.FindWithTag("BlueSpawn");
             othercube = GameObject.FindWithTag("RedCube");
             mask = LayerMask.GetMask("RedWall");
+            spike = LayerMask.GetMask("RedSpike");
         }
         else
         {
+            spawn = GameObject.FindWithTag("RedSpawn");
             othercube = GameObject.FindWithTag("BlueCube");
             mask = LayerMask.GetMask("BlueWall");
+            spike = LayerMask.GetMask("BlueSpike");
         }
+        spawn.transform.position = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         movementfailed = false;
+        DontMove = false;
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (transform.position.x > leftbound)
@@ -57,11 +67,16 @@ public class cubemovement : MonoBehaviour
     void MoveCube(Vector3 movement)
     {
         //checks if the movement is blocked by any walls
-        if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")))
+        if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
         {
-            //checks if the other cube is blocking the movement
-            //runs if it didn't
-            if (transform.position + movement != othercube.transform.position)
+            if (Physics2D.Raycast(transform.position, movement, 1.2f, spike))
+            {
+                Debug.Log("SPIKE");
+                transform.position = spawn.transform.position;
+                othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
+                DontMove = true;
+            }
+            else if (transform.position + movement != othercube.transform.position)
             {
                 //moves the other cube if it got blocked by this one
                 //basically just a debug, neccesary because one script runs before the other
