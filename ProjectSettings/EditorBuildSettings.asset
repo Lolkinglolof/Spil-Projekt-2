@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: 25cc107a83ed7f44783998414b0f0569
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/The Board.unity
     guid: 96d78dbbc0154104a9713dd5b64791ef
   - enabled: 1

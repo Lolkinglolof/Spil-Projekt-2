@@ -66,17 +66,17 @@ public class cubemovement : MonoBehaviour
     }
     void MoveCube(Vector3 movement)
     {
-        //checks if the movement is blocked by any walls
-        if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
+        //checks if we hit a spike
+        if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
         {
-            if (Physics2D.Raycast(transform.position, movement, 1.2f, spike))
-            {
-                Debug.Log("SPIKE");
-                transform.position = spawn.transform.position;
-                othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
-                DontMove = true;
-            }
-            else if (transform.position + movement != othercube.transform.position)
+            transform.position = spawn.transform.position;
+            othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
+            DontMove = true;
+        }
+        else if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
+        {
+            //checks if the movement is blocked by the other cube
+            if (transform.position + movement != othercube.transform.position)
             {
                 //moves the other cube if it got blocked by this one
                 //basically just a debug, neccesary because one script runs before the other
