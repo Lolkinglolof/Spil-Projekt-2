@@ -1445,7 +1445,7 @@ MonoBehaviour:
   bluecube: {fileID: 0}
   redgoal: {fileID: 0}
   bluegoal: {fileID: 0}
-  nextscene: LevelOne
+  nextscene: LevelSpike
 --- !u!4 &707537998
 Transform:
   m_ObjectHideFlags: 0

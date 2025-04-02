@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/The Board.unity
     guid: 96d78dbbc0154104a9713dd5b64791ef
+  - enabled: 0
+    path: Assets/Scenes/LevelThe.unity
+    guid: ac94399024beb9e4aaabebbdc5b18e88
   - enabled: 1
     path: Assets/Scenes/LevelZero.unity
     guid: f9830386ce9252446b83c7c8893d39ab
@@ -21,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelTwo.unity
     guid: 0dc1ab88772e6b0479c499fa824b308d
   - enabled: 1
-    path: Assets/Scenes/LevelThe.unity
-    guid: ac94399024beb9e4aaabebbdc5b18e88
+    path: Assets/Scenes/LevelThree.unity
+    guid: 0912276d8c9cff642a7b6af09af01e7c
+  - enabled: 1
+    path: Assets/Scenes/LevelSpikeIntro.unity
+    guid: e16e3a0d07d448f46a83e7f9b220d3fa
   m_configObjects: {}
