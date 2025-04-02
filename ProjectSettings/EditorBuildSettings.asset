@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelSpikeIntro.unity
     guid: e16e3a0d07d448f46a83e7f9b220d3fa
+  - enabled: 1
+    path: Assets/Scenes/LevelSpike.unity
+    guid: c84bc4a3c37cbff4e82d06a9dc38e513
   m_configObjects: {}
