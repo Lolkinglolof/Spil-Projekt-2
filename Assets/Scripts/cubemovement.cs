@@ -73,6 +73,11 @@ public class cubemovement : MonoBehaviour
             othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
             DontMove = true;
         }
+        else if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
+        {
+                GameObject Portal = Physics2D.Raycast(transform.position, movement, 1).collider.gameObject;
+                Portal.GetComponent<PortalScript>().Teleport(movement, gameObject);
+        }
         else if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
         {
             //checks if the movement is blocked by the other cube
@@ -90,5 +95,6 @@ public class cubemovement : MonoBehaviour
             }
             else movementfailed = true;
         }
+        
     }
 }
