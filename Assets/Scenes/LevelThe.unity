@@ -421,7 +421,11 @@ MonoBehaviour:
   bluecube: {fileID: 0}
   redgoal: {fileID: 0}
   bluegoal: {fileID: 0}
+<<<<<<< Updated upstream
   nextscene: LevelZero
+=======
+  nextscene: LevelSpike
+>>>>>>> Stashed changes
 --- !u!4 &1189068576
 Transform:
   m_ObjectHideFlags: 0
