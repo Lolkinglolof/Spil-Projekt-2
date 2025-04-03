@@ -67,21 +67,26 @@ public class cubemovement : MonoBehaviour
     void MoveCube(Vector3 movement)
     {
         //checks if we hit a spike
-        if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
+        
+        
+        if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
         {
-            transform.position = spawn.transform.position;
-            othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
-            DontMove = true;
-        }
-        else if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
-        {
+            if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
+            {
+                transform.position = spawn.transform.position;
+                othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
+                DontMove = true;
+            }
+            else if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
+            {
+                if (othercube.GetComponent<cubemovement>().movementfailed)
+                {
+                    othercube.transform.position = transform.position;
+                }
                 GameObject Portal = Physics2D.Raycast(transform.position, movement, 1).collider.gameObject;
                 Portal.GetComponent<PortalScript>().Teleport(movement, gameObject);
-        }
-        else if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")) && othercube.GetComponent<cubemovement>().DontMove == false)
-        {
-            //checks if the movement is blocked by the other cube
-            if (transform.position + movement != othercube.transform.position)
+            }
+            else if (transform.position + movement != othercube.transform.position)
             {
                 //moves the other cube if it got blocked by this one
                 //basically just a debug, neccesary because one script runs before the other
