@@ -81,9 +81,7 @@ public class cubemovement : MonoBehaviour
             {
                 if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
                 {
-                    transform.position = spawn.transform.position;
-                    othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
-                    DontMove = true;
+                    RestartLevel();
                 }
                 else if (transform.position + movement != othercube.transform.position)
                 {
@@ -101,5 +99,11 @@ public class cubemovement : MonoBehaviour
             }
         }
         return;
+    }
+    public void RestartLevel()
+    {
+        transform.position = spawn.transform.position;
+        othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
+        DontMove = true;
     }
 }
