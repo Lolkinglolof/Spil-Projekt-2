@@ -26,9 +26,14 @@ public class WinControl : MonoBehaviour
         {
             SceneManager.LoadScene(nextscene);
         }
+        
+    }
+    private void LateUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            redcube.GetComponent<cubemovement>().RestartLevel();
+            bluecube.GetComponent<cubemovement>().RestartLevel();
+            //redcube.GetComponent<cubemovement>().RestartLevel();
         }
     }
 }

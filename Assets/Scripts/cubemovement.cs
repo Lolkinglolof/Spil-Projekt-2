@@ -43,26 +43,30 @@ public class cubemovement : MonoBehaviour
     {
         movementfailed = false;
         DontMove = false;
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if (transform.position.x > leftbound)
-                    MoveCube(new Vector3(-speed, 0, 0));
-            }
-            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if (transform.position.x < rightbound)
-                    MoveCube(new Vector3(speed, 0, 0));
-            }
-            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                if (transform.position.y > lowerbound)
-                    MoveCube(new Vector3(0, -speed, 0));
-            }            
-            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                if (transform.position.y < upperbound)
-                    MoveCube(new Vector3(0, speed, 0));
-            }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (transform.position.x > leftbound)
+                MoveCube(new Vector3(-speed, 0, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (transform.position.x < rightbound)
+                MoveCube(new Vector3(speed, 0, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (transform.position.y > lowerbound)
+                MoveCube(new Vector3(0, -speed, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (transform.position.y < upperbound)
+                MoveCube(new Vector3(0, speed, 0));
+        }
+    }
+    public void UpdateCalledFrom()
+    {
+        
     }
     void MoveCube(Vector3 movement)
     {
