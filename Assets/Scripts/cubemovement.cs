@@ -44,31 +44,33 @@ public class cubemovement : MonoBehaviour
     {
         movementfailed = false;
         DontMove = false;
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (othercube.GetComponent<cubemovement>().DontMove == false)
         {
-            movementscore++;
-            if (transform.position.x > leftbound)
-                MoveCube(new Vector3(-speed, 0, 0));
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                movementscore++;
+                if (transform.position.x > leftbound)
+                    MoveCube(new Vector3(-speed, 0, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                movementscore++;
+                if (transform.position.x < rightbound)
+                    MoveCube(new Vector3(speed, 0, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                movementscore++;
+                if (transform.position.y > lowerbound)
+                    MoveCube(new Vector3(0, -speed, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                movementscore++;
+                if (transform.position.y < upperbound)
+                    MoveCube(new Vector3(0, speed, 0));
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            movementscore++;
-            if (transform.position.x < rightbound)
-                MoveCube(new Vector3(speed, 0, 0));
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            movementscore++;
-            if (transform.position.y > lowerbound)
-                MoveCube(new Vector3(0, -speed, 0));
-        }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            movementscore++;
-            if (transform.position.y < upperbound)
-                MoveCube(new Vector3(0, speed, 0));
-        }
-
         movementcounter.text = movementscore.ToString();
     }
     void MoveCube(Vector3 movement)
