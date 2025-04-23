@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -90,11 +91,8 @@ public class cubemovement : MonoBehaviour
             {
                 if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
                 {
-                    transform.position = spawn.transform.position;
-                    othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
-                    DontMove = true;
-                    movementscore = 0;
-                    othercube.GetComponent<cubemovement>().movementscore = 0;
+                    StartCoroutine(Reset());
+                    othercube.GetComponent<cubemovement>().StartCoroutine(Reset());
                 }
                 else if (transform.position + movement != othercube.transform.position)
                 {
@@ -112,5 +110,15 @@ public class cubemovement : MonoBehaviour
             }
         }
         return;
+    }
+    IEnumerator Reset()
+    {
+        transform.GetChild(0).GetComponent<Animator>().SetTrigger("die");
+        yield return new WaitForSeconds(1.3f);
+        transform.GetChild(0).GetComponent<Animator>().SetTrigger("alive");
+        transform.position = spawn.transform.position;
+        movementscore = 0;
+        othercube.GetComponent<cubemovement>().movementscore = 0;
+        DontMove = true;
     }
 }
