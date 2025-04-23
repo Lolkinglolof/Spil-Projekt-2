@@ -121,7 +121,6 @@ public class cubemovement : MonoBehaviour
         transform.GetChild(0).GetComponent<Animator>().SetTrigger("alive");
         transform.position = spawn.transform.position;
         movementscore = 0;
-        othercube.GetComponent<cubemovement>().movementscore = 0;
         hitspike = false;
         DontMove = false;
     }
