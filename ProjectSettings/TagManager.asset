@@ -12,6 +12,8 @@ TagManager:
   - BlueSpawn
   - Portal
   - movementcounter
+  - Play
+  - Quit
   layers:
   - Default
   - TransparentFX
