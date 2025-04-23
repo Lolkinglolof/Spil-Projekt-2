@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ public class cubemovement : MonoBehaviour
     public LayerMask mask;
     public LayerMask spike;
     public GameObject spawn;
+    public TMP_Text movementcounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +39,7 @@ public class cubemovement : MonoBehaviour
             spike = LayerMask.GetMask("BlueSpike");
         }
         spawn.transform.position = transform.position;
+        movementcounter = GameObject.FindWithTag("movementcounter").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -71,6 +74,7 @@ public class cubemovement : MonoBehaviour
                     MoveCube(new Vector3(0, speed, 0));
             }
         }
+        movementcounter.text = movementscore.ToString();
     }
     void MoveCube(Vector3 movement)
     {
