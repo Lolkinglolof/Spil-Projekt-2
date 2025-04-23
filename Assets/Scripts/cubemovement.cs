@@ -13,15 +13,17 @@ public class cubemovement : MonoBehaviour
     public float rightbound = 6;
     public float leftbound = -7.2f;
     public bool movementfailed;
-    public bool DontMove;
     public LayerMask mask;
     public LayerMask spike;
     public GameObject spawn;
     public TMP_Text movementcounter;
+    public bool hitspike;
+    public bool DontMove;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        DontMove = false;
         if (bluecolor)
         {
             spawn = GameObject.FindWithTag("BlueSpawn");
@@ -43,10 +45,11 @@ public class cubemovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementfailed = false;
-        DontMove = false;
-        if (othercube.GetComponent<cubemovement>().DontMove == false)
+        if (DontMove == false)
         {
+            if (othercube.GetComponent<cubemovement>().hitspike)
+                StartCoroutine(Death());
+            movementfailed = false;
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 movementscore++;
@@ -71,54 +74,55 @@ public class cubemovement : MonoBehaviour
                 if (transform.position.y < upperbound)
                     MoveCube(new Vector3(0, speed, 0));
             }
+            movementcounter.text = movementscore.ToString();
         }
-        movementcounter.text = movementscore.ToString();
     }
     void MoveCube(Vector3 movement)
     {
-        if (othercube.GetComponent<cubemovement>().DontMove == false)
+
+        if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
         {
-            if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
+            if (othercube.GetComponent<cubemovement>().movementfailed)
             {
+                othercube.transform.position = transform.position;
+            }
+            GameObject Portal = Physics2D.Raycast(transform.position, movement, 1).collider.gameObject;
+            Portal.GetComponent<PortalScript>().Teleport(movement, gameObject);
+        }
+        else if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")))
+        {
+            if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
+            {
+                transform.GetChild(0).GetComponent<Animator>().SetTrigger("die");
+                StartCoroutine(Death());
+                hitspike = true;
+            }
+            else if (transform.position + movement != othercube.transform.position)
+            {
+                //moves the other cube if it got blocked by this one
+                //basically just a debug, neccesary because one script runs before the other
+                //so it's possible for a cube to be blocked when it shouldn't be without this
                 if (othercube.GetComponent<cubemovement>().movementfailed)
                 {
                     othercube.transform.position = transform.position;
                 }
-                GameObject Portal = Physics2D.Raycast(transform.position, movement, 1).collider.gameObject;
-                Portal.GetComponent<PortalScript>().Teleport(movement, gameObject);
+                //does the actual moving of the cube
+                transform.position = transform.position + movement;
             }
-            else if (!Physics2D.Raycast(transform.position, movement, 1, mask) && !Physics2D.Raycast(transform.position, movement, 1, LayerMask.GetMask("NeutralWall")))
-            {
-                if (Physics2D.Raycast(transform.position, movement, 1.2f, spike) || Physics2D.Raycast(transform.position, movement, 1.2f, LayerMask.GetMask("NeutralSpike")))
-                {
-                    StartCoroutine(Reset());
-                    othercube.GetComponent<cubemovement>().StartCoroutine(Reset());
-                }
-                else if (transform.position + movement != othercube.transform.position)
-                {
-                    //moves the other cube if it got blocked by this one
-                    //basically just a debug, neccesary because one script runs before the other
-                    //so it's possible for a cube to be blocked when it shouldn't be without this
-                    if (othercube.GetComponent<cubemovement>().movementfailed)
-                    {
-                        othercube.transform.position = transform.position;
-                    }
-                    //does the actual moving of the cube
-                    transform.position = transform.position + movement;
-                }
-                else movementfailed = true;
-            }
+            else movementfailed = true;
         }
+
         return;
     }
-    IEnumerator Reset()
+    IEnumerator Death()
     {
-        transform.GetChild(0).GetComponent<Animator>().SetTrigger("die");
-        yield return new WaitForSeconds(1.3f);
+        DontMove = true;
+        yield return new WaitForSeconds(1.417f);
         transform.GetChild(0).GetComponent<Animator>().SetTrigger("alive");
         transform.position = spawn.transform.position;
         movementscore = 0;
         othercube.GetComponent<cubemovement>().movementscore = 0;
-        DontMove = true;
+        hitspike = false;
+        DontMove = false;
     }
 }
