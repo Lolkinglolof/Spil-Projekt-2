@@ -47,8 +47,8 @@ public class cubemovement : MonoBehaviour
     {
         movementfailed = false;
         DontMove = false;
-        if (othercube.GetComponent<cubemovement>().DontMove == false)
-        {
+        
+        
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 movementscore++;
@@ -73,11 +73,13 @@ public class cubemovement : MonoBehaviour
                 if (transform.position.y < upperbound)
                     MoveCube(new Vector3(0, speed, 0));
             }
-        }
+        
         movementcounter.text = movementscore.ToString();
     }
     void MoveCube(Vector3 movement)
     {
+        if (othercube.GetComponent<cubemovement>().DontMove == false)
+        {
             if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
             {
                 if (othercube.GetComponent<cubemovement>().movementfailed)
@@ -111,6 +113,7 @@ public class cubemovement : MonoBehaviour
                 }
                 else movementfailed = true;
             }
+        }
         return;
     }
 }
