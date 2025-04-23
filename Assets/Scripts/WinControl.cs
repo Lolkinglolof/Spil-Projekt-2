@@ -34,6 +34,8 @@ public class WinControl : MonoBehaviour
         {
             bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
             redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
+            redcube.GetComponent<cubemovement>().movementscore = 0;
+            bluecube.GetComponent<cubemovement>().movementscore = 0;
         }
     }
 }

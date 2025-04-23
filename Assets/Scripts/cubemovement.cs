@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class cubemovement : MonoBehaviour
 {
+    public int movementscore = 0;
     public GameObject othercube;
     public float speed = 1.2f;
     public bool bluecolor;
@@ -43,35 +44,36 @@ public class cubemovement : MonoBehaviour
     {
         movementfailed = false;
         DontMove = false;
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (othercube.GetComponent<cubemovement>().DontMove == false)
         {
-            if (transform.position.x > leftbound)
-                MoveCube(new Vector3(-speed, 0, 0));
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                movementscore++;
+                if (transform.position.x > leftbound)
+                    MoveCube(new Vector3(-speed, 0, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                movementscore++;
+                if (transform.position.x < rightbound)
+                    MoveCube(new Vector3(speed, 0, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                movementscore++;
+                if (transform.position.y > lowerbound)
+                    MoveCube(new Vector3(0, -speed, 0));
+            }
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                movementscore++;
+                if (transform.position.y < upperbound)
+                    MoveCube(new Vector3(0, speed, 0));
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (transform.position.x < rightbound)
-                MoveCube(new Vector3(speed, 0, 0));
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (transform.position.y > lowerbound)
-                MoveCube(new Vector3(0, -speed, 0));
-        }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (transform.position.y < upperbound)
-                MoveCube(new Vector3(0, speed, 0));
-        }
-    }
-    public void UpdateCalledFrom()
-    {
-        
     }
     void MoveCube(Vector3 movement)
     {
-        if (othercube.GetComponent<cubemovement>().DontMove == false)
-        {
             if (Physics2D.Raycast(transform.position, movement, 1).collider != null && Physics2D.Raycast(transform.position, movement, 1).collider.gameObject.tag == "Portal")
             {
                 if (othercube.GetComponent<cubemovement>().movementfailed)
@@ -88,6 +90,8 @@ public class cubemovement : MonoBehaviour
                     transform.position = spawn.transform.position;
                     othercube.transform.position = othercube.GetComponent<cubemovement>().spawn.transform.position;
                     DontMove = true;
+                    movementscore = 0;
+                    othercube.GetComponent<cubemovement>().movementscore = 0;
                 }
                 else if (transform.position + movement != othercube.transform.position)
                 {
@@ -103,7 +107,6 @@ public class cubemovement : MonoBehaviour
                 }
                 else movementfailed = true;
             }
-        }
         return;
     }
 }
