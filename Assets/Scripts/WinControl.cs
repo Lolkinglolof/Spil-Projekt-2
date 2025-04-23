@@ -30,15 +30,10 @@ public class WinControl : MonoBehaviour
     }
     private void LateUpdate()
     {
-        //i don't know why, but this breaks if both restart functions are called
-        //with this setup, the blue cube needs to be above the red one in the hierarchy
-        //and that has to be above this one
-        //for whatever reason it apparently just works like this
-        //i give up on understanding it
         if (Input.GetKeyDown(KeyCode.R))
         {
-            bluecube.GetComponent<cubemovement>().RestartLevel();
-            //redcube.GetComponent<cubemovement>().RestartLevel();
+            bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
+            redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
         }
     }
 }
