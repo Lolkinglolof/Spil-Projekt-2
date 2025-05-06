@@ -12,7 +12,8 @@ public class WinControl : MonoBehaviour
     public GameObject redgoal;
     public GameObject bluegoal;
     public string nextscene;
-    public float timescore = 0;
+    public float timescore;
+    public bool FirstLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,10 @@ public class WinControl : MonoBehaviour
         bluecube = GameObject.FindWithTag("BlueCube");
         redgoal = GameObject.FindWithTag("RedGoal");
         bluegoal = GameObject.FindWithTag("BlueGoal");
+        if (FirstLevel)
+        {
+            timescore = 0;
+        }
     }
 
     // Update is called once per frame

@@ -1627,6 +1627,7 @@ MonoBehaviour:
   bluegoal: {fileID: 0}
   nextscene: LevelOne
   timescore: 0
+  FirstLevel: 1
 --- !u!4 &707537998
 Transform:
   m_ObjectHideFlags: 0
