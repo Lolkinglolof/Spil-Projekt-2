@@ -19,7 +19,7 @@ public class WinControl : MonoBehaviour
         bluecube = GameObject.FindWithTag("BlueCube");
         redgoal = GameObject.FindWithTag("RedGoal");
         bluegoal = GameObject.FindWithTag("BlueGoal");
-        timescore = 0;
+        timescore = PlayerPrefs.GetFloat("CarryOverTime");
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class WinControl : MonoBehaviour
     {
         if (redcube.transform.position == redgoal.transform.position && bluecube.transform.position == bluegoal.transform.position)
         {
-            PlayerPrefs.SetFloat("CarryOverTime", 123.12f); //Placeholder time
+            PlayerPrefs.SetFloat("CarryOverTime", timescore);
             SceneManager.LoadScene(nextscene);
         }
         timescore = timescore + Time.deltaTime;
