@@ -23,7 +23,7 @@ public class WinControl : MonoBehaviour
         bluegoal = GameObject.FindWithTag("BlueGoal");
         if (FirstLevel)
         {
-            timescore = 0;
+            PlayerPrefs.SetFloat("CarryOverTime", 0);
         }
     }
 
@@ -34,8 +34,9 @@ public class WinControl : MonoBehaviour
         {
             SceneManager.LoadScene(nextscene);
         }
-        PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
+        
         timescore = PlayerPrefs.GetFloat("CarryOverTime");
+        PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
         GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = timescore.ToString();
     }
     private void LateUpdate()
