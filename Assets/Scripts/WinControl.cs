@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements.Platform.Editor;
 using UnityEngine.SceneManagement;
 
 public class WinControl : MonoBehaviour
@@ -24,6 +25,7 @@ public class WinControl : MonoBehaviour
     {
         if (redcube.transform.position == redgoal.transform.position && bluecube.transform.position == bluegoal.transform.position)
         {
+            PlayerPrefs.SetFloat("CarryOverTime", 123.12f); //Placeholder time
             SceneManager.LoadScene(nextscene);
         }
         
