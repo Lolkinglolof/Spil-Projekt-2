@@ -11,6 +11,7 @@ public class WinControl : MonoBehaviour
     public GameObject redgoal;
     public GameObject bluegoal;
     public string nextscene;
+    public float timescore;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class WinControl : MonoBehaviour
         bluecube = GameObject.FindWithTag("BlueCube");
         redgoal = GameObject.FindWithTag("RedGoal");
         bluegoal = GameObject.FindWithTag("BlueGoal");
+        timescore = 0;
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class WinControl : MonoBehaviour
             PlayerPrefs.SetFloat("CarryOverTime", 123.12f); //Placeholder time
             SceneManager.LoadScene(nextscene);
         }
-        
+        timescore = timescore + Time.deltaTime;
     }
     private void LateUpdate()
     {
