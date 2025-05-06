@@ -32,6 +32,7 @@ public class WinControl : MonoBehaviour
     {
         if (redcube.transform.position == redgoal.transform.position && bluecube.transform.position == bluegoal.transform.position)
         {
+            if(!redcube.GetComponent<cubemovement>().hitspike && !bluecube.GetComponent<cubemovement>().hitspike)
             SceneManager.LoadScene(nextscene);
         }
         
