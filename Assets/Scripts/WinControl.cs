@@ -12,7 +12,7 @@ public class WinControl : MonoBehaviour
     public GameObject redgoal;
     public GameObject bluegoal;
     public string nextscene;
-    public float timescore;
+    public float timescore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,8 @@ public class WinControl : MonoBehaviour
         {
             SceneManager.LoadScene(nextscene);
         }
-        PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
+        PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
+        timescore = PlayerPrefs.GetFloat("CarryOverTime");
         GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = timescore.ToString();
     }
     private void LateUpdate()
