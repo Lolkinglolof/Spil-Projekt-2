@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Advertisements.Platform.Editor;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,6 @@ public class WinControl : MonoBehaviour
         bluecube = GameObject.FindWithTag("BlueCube");
         redgoal = GameObject.FindWithTag("RedGoal");
         bluegoal = GameObject.FindWithTag("BlueGoal");
-        timescore = PlayerPrefs.GetFloat("CarryOverTime");
     }
 
     // Update is called once per frame
@@ -27,10 +27,10 @@ public class WinControl : MonoBehaviour
     {
         if (redcube.transform.position == redgoal.transform.position && bluecube.transform.position == bluegoal.transform.position)
         {
-            PlayerPrefs.SetFloat("CarryOverTime", timescore);
             SceneManager.LoadScene(nextscene);
         }
-        timescore = timescore + Time.deltaTime;
+        PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
+        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = timescore.ToString();
     }
     private void LateUpdate()
     {

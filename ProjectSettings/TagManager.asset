@@ -14,6 +14,7 @@ TagManager:
   - movementcounter
   - Play
   - Quit
+  - Stopwatch
   layers:
   - Default
   - TransparentFX
