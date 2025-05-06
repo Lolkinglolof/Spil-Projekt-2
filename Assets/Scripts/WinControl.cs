@@ -32,10 +32,13 @@ public class WinControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
-            redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
-            redcube.GetComponent<cubemovement>().movementscore = 0;
-            bluecube.GetComponent<cubemovement>().movementscore = 0;
+            if (bluecube.GetComponent<cubemovement>().DontMove == false && redcube.GetComponent<cubemovement>().DontMove == false)
+            {
+                bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
+                redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
+                redcube.GetComponent<cubemovement>().movementscore = 0;
+                bluecube.GetComponent<cubemovement>().movementscore = 0;
+            }
         }
     }
 }
