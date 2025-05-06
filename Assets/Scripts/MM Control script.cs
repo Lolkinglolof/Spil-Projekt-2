@@ -21,7 +21,7 @@ public class MMControlscript : MonoBehaviour
     {
         RaycastHit2D Hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         Object_Hit = Hit.collider.gameObject;
-        if (Hit != null && Hit.collider.gameObject.name != "Square")
+        if (Hit != false && Hit.collider.gameObject.name != "Square")
         {
             Prev_Hit = Hit.collider.gameObject;
             string Htag = Hit.collider.tag;
