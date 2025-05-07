@@ -23,9 +23,9 @@ public class WinControl : MonoBehaviour
         bluegoal = GameObject.FindWithTag("BlueGoal");
         if (FirstLevel)
         {
-            PlayerPrefs.SetInt("CarryOverTime", 0);
+            PlayerPrefs.SetFloat("CarryOverTime", 0);
         }
-        StartCoroutine(Timer());
+        //StartCoroutine(Timer());
     }
 
     // Update is called once per frame
@@ -43,8 +43,8 @@ public class WinControl : MonoBehaviour
             }
             
         }
-        //PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetInt("CarryOverTime") + Time.deltaTime);
-        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("CarryOverTime").ToString();
+        PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
+        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = PlayerPrefs.GetFloat("CarryOverTime").ToString();
     }
     private void LateUpdate()
     {
@@ -53,7 +53,7 @@ public class WinControl : MonoBehaviour
             Restart();
         }
     }
-    IEnumerator Timer()
+    /*IEnumerator Timer()
     {
         while (true)
         {
@@ -61,7 +61,7 @@ public class WinControl : MonoBehaviour
             PlayerPrefs.SetInt("CarryOverTime", PlayerPrefs.GetInt("CarryOverTime") + 1);
             yield return delay;
         }
-    }
+    }*/
     public void Restart()
     {
         if (bluecube.GetComponent<cubemovement>().DontMove == false && redcube.GetComponent<cubemovement>().DontMove == false)

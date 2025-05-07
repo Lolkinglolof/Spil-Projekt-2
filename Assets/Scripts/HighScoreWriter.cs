@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class HighScoreWriter : MonoBehaviour
 {
-    int HighScoreTime;
-    int CarryOverTime;
+    float HighScoreTime;
+    float CarryOverTime;
     int GameComplete;
     // Start is called before the first frame update
     void Start()
     {
-        HighScoreTime = PlayerPrefs.GetInt("HighScoreTime");
-        CarryOverTime = PlayerPrefs.GetInt("CarryOverTime");
+        HighScoreTime = PlayerPrefs.GetFloat("HighScoreTime");
+        CarryOverTime = PlayerPrefs.GetFloat("CarryOverTime");
         GameComplete = PlayerPrefs.GetInt("GameComplete");
         if (GameComplete == 1)
         {
@@ -18,14 +18,14 @@ public class HighScoreWriter : MonoBehaviour
             {
                 HighScoreTime = CarryOverTime;
             }
-            GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: " + PlayerPrefs.GetInt("CarryOverTime").ToString();
+            GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: " + PlayerPrefs.GetFloat("CarryOverTime").ToString();
             PlayerPrefs.SetInt("GameComplete", 0);
         } else GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: Invalid";
 
-        PlayerPrefs.SetInt("HighScoreTime", HighScoreTime);
+        PlayerPrefs.SetFloat("HighScoreTime", HighScoreTime);
         PlayerPrefs.Save();
         
-        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + PlayerPrefs.GetInt("HighScoreTime").ToString();
+        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + PlayerPrefs.GetFloat("HighScoreTime").ToString();
     }
 
     // Update is called once per frame
