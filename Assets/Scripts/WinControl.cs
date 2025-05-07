@@ -62,7 +62,7 @@ public class WinControl : MonoBehaviour
             yield return delay;
         }
     }
-    void Restart()
+    public void Restart()
     {
         if (bluecube.GetComponent<cubemovement>().DontMove == false && redcube.GetComponent<cubemovement>().DontMove == false)
         {
