@@ -32,7 +32,7 @@ public class Buttoncontroller : MonoBehaviour
 
             GameObject.FindWithTag(WinControlObjectTag).GetComponent<WinControl>().Restart();
         }
-        else if (Input.GetMouseButton(0) && Hit.collider.gameObject.tag == "menu")
+        else if (Input.GetMouseButton(0) && Hit.collider.gameObject.tag == "menu" || Input.GetKey(KeyCode.Escape))
         {
 
             SceneManager.LoadScene("Main Menu");
