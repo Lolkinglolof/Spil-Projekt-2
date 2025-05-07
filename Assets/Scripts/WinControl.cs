@@ -43,13 +43,7 @@ public class WinControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (bluecube.GetComponent<cubemovement>().DontMove == false && redcube.GetComponent<cubemovement>().DontMove == false)
-            {
-                bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
-                redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
-                redcube.GetComponent<cubemovement>().movementscore = 0;
-                bluecube.GetComponent<cubemovement>().movementscore = 0;
-            }
+            Restart();
         }
     }
     IEnumerator Timer()
@@ -59,6 +53,16 @@ public class WinControl : MonoBehaviour
             WaitForSeconds delay = new WaitForSeconds(1);
             PlayerPrefs.SetInt("CarryOverTime", PlayerPrefs.GetInt("CarryOverTime") + 1);
             yield return delay;
+        }
+    }
+    void Restart()
+    {
+        if (bluecube.GetComponent<cubemovement>().DontMove == false && redcube.GetComponent<cubemovement>().DontMove == false)
+        {
+            bluecube.transform.position = bluecube.GetComponent<cubemovement>().spawn.transform.position;
+            redcube.transform.position = redcube.GetComponent<cubemovement>().spawn.transform.position;
+            redcube.GetComponent<cubemovement>().movementscore = 0;
+            bluecube.GetComponent<cubemovement>().movementscore = 0;
         }
     }
 }
