@@ -12,8 +12,8 @@ public class WinControl : MonoBehaviour
     public GameObject redgoal;
     public GameObject bluegoal;
     public string nextscene;
-    public int timescore;
     public bool FirstLevel;
+    public bool LastLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +34,16 @@ public class WinControl : MonoBehaviour
         if (redcube.transform.position == redgoal.transform.position && bluecube.transform.position == bluegoal.transform.position)
         {
             if(!redcube.GetComponent<cubemovement>().hitspike && !bluecube.GetComponent<cubemovement>().hitspike)
-            SceneManager.LoadScene(nextscene);
+            {
+                if (LastLevel)
+                {
+                    PlayerPrefs.SetInt("GameComplete", 1);
+                }
+                SceneManager.LoadScene(nextscene);
+            }
+            
         }
-        //PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
+        //PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetInt("CarryOverTime") + Time.deltaTime);
         GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("CarryOverTime").ToString();
     }
     private void LateUpdate()
