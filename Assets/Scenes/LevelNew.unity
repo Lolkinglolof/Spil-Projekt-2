@@ -4891,6 +4891,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3250559350681119186, guid: 1c263ef9faa80394d934e1fbc67dcd50, type: 3}
+      propertyPath: MenuButton
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 463625562992554228, guid: 1c263ef9faa80394d934e1fbc67dcd50, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.997471
