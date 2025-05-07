@@ -18,14 +18,14 @@ public class HighScoreWriter : MonoBehaviour
             {
                 HighScoreTime = CarryOverTime;
             }
-            GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: " + PlayerPrefs.GetFloat("CarryOverTime").ToString();
+            GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: " + System.Math.Round(PlayerPrefs.GetFloat("CarryOverTime"), 3).ToString();
             PlayerPrefs.SetInt("GameComplete", 0);
         } else GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: Invalid";
 
         PlayerPrefs.SetFloat("HighScoreTime", HighScoreTime);
         PlayerPrefs.Save();
         
-        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + PlayerPrefs.GetFloat("HighScoreTime").ToString();
+        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + System.Math.Round(PlayerPrefs.GetFloat("HighScoreTime"), 3).ToString();
     }
 
     // Update is called once per frame

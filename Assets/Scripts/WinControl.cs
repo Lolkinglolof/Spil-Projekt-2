@@ -44,7 +44,7 @@ public class WinControl : MonoBehaviour
             
         }
         PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
-        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = PlayerPrefs.GetFloat("CarryOverTime").ToString();
+        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = System.Math.Round(PlayerPrefs.GetFloat("CarryOverTime"), 0).ToString();
     }
     private void LateUpdate()
     {
