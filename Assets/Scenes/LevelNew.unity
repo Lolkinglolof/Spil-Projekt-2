@@ -3120,7 +3120,8 @@ MonoBehaviour:
   redgoal: {fileID: 0}
   bluegoal: {fileID: 0}
   nextscene: Main Menu
-  timescore: 0
+  FirstLevel: 0
+  LastLevel: 1
 --- !u!4 &642929572
 Transform:
   m_ObjectHideFlags: 0
