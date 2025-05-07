@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using TMPro;
 
 public class HighScoreWriter : MonoBehaviour
 {
-    float HighScoreTime;
-    float CarryOverTime;
+    int HighScoreTime;
+    int CarryOverTime;
     GameObject HighScoreTimeText;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class HighScoreWriter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: "+PlayerPrefs.GetInt("CarryOverTime").ToString();
+        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + PlayerPrefs.GetInt("HighScoreTime").ToString();
     }
 }

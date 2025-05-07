@@ -15,6 +15,7 @@ TagManager:
   - Play
   - Quit
   - Stopwatch
+  - HighScore
   layers:
   - Default
   - TransparentFX
