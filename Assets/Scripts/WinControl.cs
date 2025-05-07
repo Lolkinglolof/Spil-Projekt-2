@@ -12,7 +12,7 @@ public class WinControl : MonoBehaviour
     public GameObject redgoal;
     public GameObject bluegoal;
     public string nextscene;
-    public float timescore;
+    public int timescore;
     public bool FirstLevel;
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,9 @@ public class WinControl : MonoBehaviour
         bluegoal = GameObject.FindWithTag("BlueGoal");
         if (FirstLevel)
         {
-            PlayerPrefs.SetFloat("CarryOverTime", 0);
+            PlayerPrefs.SetInt("CarryOverTime", 0);
         }
+        StartCoroutine(Timer());
     }
 
     // Update is called once per frame
@@ -35,10 +36,8 @@ public class WinControl : MonoBehaviour
             if(!redcube.GetComponent<cubemovement>().hitspike && !bluecube.GetComponent<cubemovement>().hitspike)
             SceneManager.LoadScene(nextscene);
         }
-        
-        timescore = PlayerPrefs.GetFloat("CarryOverTime");
-        PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
-        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = timescore.ToString();
+        //PlayerPrefs.SetFloat("CarryOverTime", timescore + Time.deltaTime);
+        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("CarryOverTime").ToString();
     }
     private void LateUpdate()
     {
@@ -51,6 +50,15 @@ public class WinControl : MonoBehaviour
                 redcube.GetComponent<cubemovement>().movementscore = 0;
                 bluecube.GetComponent<cubemovement>().movementscore = 0;
             }
+        }
+    }
+    IEnumerator Timer()
+    {
+        while (true)
+        {
+            WaitForSeconds delay = new WaitForSeconds(1);
+            PlayerPrefs.SetInt("CarryOverTime", PlayerPrefs.GetInt("CarryOverTime") + 1);
+            yield return delay;
         }
     }
 }
