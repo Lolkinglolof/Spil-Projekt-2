@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 707537997}
   m_Layer: 0
   m_Name: wincontrol
-  m_TagString: Untagged
+  m_TagString: wincontrol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1710,8 +1710,8 @@ MonoBehaviour:
   redgoal: {fileID: 0}
   bluegoal: {fileID: 0}
   nextscene: LevelOne
-  timescore: 0
   FirstLevel: 1
+  LastLevel: 0
 --- !u!4 &707537998
 Transform:
   m_ObjectHideFlags: 0

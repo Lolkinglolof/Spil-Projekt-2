@@ -16,6 +16,7 @@ TagManager:
   - Quit
   - Stopwatch
   - HighScore
+  - wincontrol
   layers:
   - Default
   - TransparentFX

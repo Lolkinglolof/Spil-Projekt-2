@@ -5182,7 +5182,7 @@ GameObject:
   - component: {fileID: 1128813030}
   m_Layer: 0
   m_Name: wincontrol
-  m_TagString: Untagged
+  m_TagString: wincontrol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5204,7 +5204,8 @@ MonoBehaviour:
   redgoal: {fileID: 0}
   bluegoal: {fileID: 0}
   nextscene: PortalIntro
-  timescore: 0
+  FirstLevel: 0
+  LastLevel: 0
 --- !u!4 &1128813031
 Transform:
   m_ObjectHideFlags: 0
