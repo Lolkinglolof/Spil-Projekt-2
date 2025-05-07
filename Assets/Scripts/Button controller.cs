@@ -27,17 +27,16 @@ public class Buttoncontroller : MonoBehaviour
     void Update()
     {
         RaycastHit2D Hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (Input.GetMouseButton(0) && Hit == gameObject)
+        if (Input.GetMouseButton(0) && Hit.collider.gameObject.tag == "restart")
         {
-            switch (MenuButton)
-            {
-                case false:
-                    GameObject.FindWithTag(WinControlObjectTag).GetComponent<WinControl>().Restart();
-                    break;
-                case true:
-                    SceneManager.LoadScene("Main Menu");
-                    break;
-            }
+
+            GameObject.FindWithTag(WinControlObjectTag).GetComponent<WinControl>().Restart();
         }
+        else if (Input.GetMouseButton(0) && Hit.collider.gameObject.tag == "menu")
+        {
+
+            SceneManager.LoadScene("Main Menu");
+        }
+          
     }
 }

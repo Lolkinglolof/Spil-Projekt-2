@@ -17,6 +17,8 @@ TagManager:
   - Stopwatch
   - HighScore
   - wincontrol
+  - restart
+  - menu
   layers:
   - Default
   - TransparentFX

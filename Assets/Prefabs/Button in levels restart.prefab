@@ -215,8 +215,8 @@ GameObject:
   - component: {fileID: 5450005215379101164}
   - component: {fileID: -3250559350681119186}
   m_Layer: 0
-  m_Name: Button in levels
-  m_TagString: menu
+  m_Name: Button in levels restart
+  m_TagString: restart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
