@@ -5,15 +5,22 @@ public class HighScoreWriter : MonoBehaviour
 {
     int HighScoreTime;
     int CarryOverTime;
+    int GameComplete;
     // Start is called before the first frame update
     void Start()
     {
         HighScoreTime = PlayerPrefs.GetInt("HighScoreTime");
         CarryOverTime = PlayerPrefs.GetInt("CarryOverTime");
-        if (CarryOverTime < HighScoreTime || HighScoreTime == 0)
+        GameComplete = PlayerPrefs.GetInt("GameComplete");
+        if (GameComplete == 1)
         {
-            HighScoreTime = CarryOverTime;
+            if (CarryOverTime < HighScoreTime || HighScoreTime == 0)
+            {
+                HighScoreTime = CarryOverTime;
+            }
+            PlayerPrefs.SetInt("GameComplete", 0);
         }
+        
         PlayerPrefs.SetInt("HighScoreTime", HighScoreTime);
         PlayerPrefs.Save();
     }
