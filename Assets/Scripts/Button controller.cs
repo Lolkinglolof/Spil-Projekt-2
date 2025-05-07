@@ -8,6 +8,7 @@ public class Buttoncontroller : MonoBehaviour
     string menuText = "Return to Menu";
     string restartText = "Restart Level";
     public TextMeshPro TextObject;
+    string WinControlObjectTag = "wincontrol";
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class Buttoncontroller : MonoBehaviour
             switch (MenuButton)
             {
                 case false:
-                    //insert spike function
+                    GameObject.FindWithTag(WinControlObjectTag).GetComponent<WinControl>().Restart();
                     break;
                 case true:
                     SceneManager.LoadScene("Main Menu");
