@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectController : MonoBehaviour
 {
+    public Material green;
+    public Material purple;
+    public GameObject Controller;
     public Canvas canvas;
     public GameObject Menu;
     public GameObject level1But;
@@ -26,8 +29,10 @@ public class LevelSelectController : MonoBehaviour
     {
         RaycastHit2D Hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         Object_Hit = Hit.collider.gameObject;
-        if (Hit != false && Hit.collider.gameObject.name != "Square")
+        if (Hit != false && Hit.collider.gameObject.name != "Square" || Hit.collider.gameObject.name != "circle")
         {
+            Object_Hit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = green;
+
             if (Input.GetMouseButton(0))
             {
 
@@ -69,6 +74,7 @@ public class LevelSelectController : MonoBehaviour
                 {
                     Menu.transform.position = new Vector2(100, 100);
                     canvas.GetComponent<Canvas>().enabled = true;
+                    Controller.SetActive(true);
                 }
 
             }

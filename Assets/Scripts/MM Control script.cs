@@ -51,6 +51,7 @@ public class MMControlscript : MonoBehaviour
                     case "LevelSelect":
                         LevelSelector.transform.position = new Vector3(0,0,-5);
                         canvas.GetComponent<Canvas>().enabled = false;
+                        gameObject.SetActive(false);
                         break;
 
                 }
