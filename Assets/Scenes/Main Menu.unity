@@ -1302,6 +1302,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Level Select
       objectReference: {fileID: 0}
+    - target: {fileID: 4870485569554460272, guid: a649ec4e48abb6944a904359a96a35b4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c970ac6498ed8b44a3e12fff8d973ee, type: 2}
+    - target: {fileID: 4870485569554460272, guid: a649ec4e48abb6944a904359a96a35b4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4409758951843766559, guid: 5c970ac6498ed8b44a3e12fff8d973ee, type: 2}
+    - target: {fileID: 4870485569554460272, guid: a649ec4e48abb6944a904359a96a35b4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870485569554460272, guid: a649ec4e48abb6944a904359a96a35b4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080371149565349069, guid: a649ec4e48abb6944a904359a96a35b4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4409758951843766559, guid: 5c970ac6498ed8b44a3e12fff8d973ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
