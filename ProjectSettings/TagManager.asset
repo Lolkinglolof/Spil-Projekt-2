@@ -19,6 +19,7 @@ TagManager:
   - wincontrol
   - restart
   - menu
+  - LevelSelect
   layers:
   - Default
   - TransparentFX
