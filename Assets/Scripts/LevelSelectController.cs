@@ -17,7 +17,8 @@ public class LevelSelectController : MonoBehaviour
     public GameObject level7But;
     public GameObject level8But;
     public GameObject level9But;
-    GameObject Object_Hit;
+    public GameObject ObjectHit;
+    public GameObject PrevHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +29,23 @@ public class LevelSelectController : MonoBehaviour
     void Update()
     {
         RaycastHit2D Hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        Object_Hit = Hit.collider.gameObject;
-        if (Hit != false && Hit.collider.gameObject.name != "Square" || Hit.collider.gameObject.name != "circle")
+        ObjectHit = Hit.collider.gameObject;
+        if (Hit != false && ObjectHit.tag != "restart")
         {
-            Object_Hit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = green;
+            if (ObjectHit.tag != "menu" || ObjectHit.tag != "restart")
+            {
+                ObjectHit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = green;
+                PrevHit = ObjectHit;
+            }
+            if (ObjectHit != PrevHit)
+            {
+                PrevHit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = purple;
+            }
 
             if (Input.GetMouseButton(0))
             {
 
-                string HitName = Object_Hit.name;
+                string HitName = ObjectHit.name;
                 if (HitName.Contains("Level"))
                 {
                     switch (HitName)
@@ -70,7 +79,7 @@ public class LevelSelectController : MonoBehaviour
                             break;
                     }
                 }
-                else if (Object_Hit.tag == "menu")
+                else if (ObjectHit.tag == "menu")
                 {
                     Menu.transform.position = new Vector2(100, 100);
                     canvas.GetComponent<Canvas>().enabled = true;
@@ -78,6 +87,10 @@ public class LevelSelectController : MonoBehaviour
                 }
 
             }
+        }
+        else if (PrevHit.tag != "restart" || PrevHit.tag != "menu")
+        {
+            PrevHit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = purple;
         }
 
     }

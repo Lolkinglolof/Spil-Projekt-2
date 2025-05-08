@@ -788,14 +788,46 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.67058825
       objectReference: {fileID: 0}
+    - target: {fileID: 6705794110523287525, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705794110523287525, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705794110523287525, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705794110523287525, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705794110523287525, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917392917741916427, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 2100000, guid: 34c7d7f79adf0274e87882896c87a66a, type: 2}
     - target: {fileID: 6917392917741916427, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 123805092}
     - target: {fileID: 6917392917741916427, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: purple
+      value: 
+      objectReference: {fileID: 2100000, guid: b99916406619dbc4393798f0899954e0, type: 2}
+    - target: {fileID: 6917392917741916427, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
       propertyPath: Controller
       value: 
       objectReference: {fileID: 1538892003}
+    - target: {fileID: 7568823962493087044, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_TagString
+      value: restart
+      objectReference: {fileID: 0}
     - target: {fileID: 8289241424852809620, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.18
@@ -804,10 +836,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 8475739778469397456, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      propertyPath: m_Name
+      value: BackGround
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7568823962493087044, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1171455508}
     - targetCorrespondingSourceObject: {fileID: 6398760424193547526, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -1172,6 +1211,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109121067}
   m_CullTransparentMesh: 1
+--- !u!1 &1171455505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7568823962493087044, guid: 2b85b7d2c528a8841a95ae463dab4dbe, type: 3}
+  m_PrefabInstance: {fileID: 523390211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1171455508
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171455505}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1280456036
 GameObject:
   m_ObjectHideFlags: 0
