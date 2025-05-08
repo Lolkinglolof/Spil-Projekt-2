@@ -43,6 +43,7 @@ public class MMControlscript : MonoBehaviour
                 switch (Htag)
                 {
                     case "Play":
+                        PlayerPrefs.SetInt("UseTimer", 1);
                         SceneManager.LoadScene(Level);
                         break;
                     case "Quit":

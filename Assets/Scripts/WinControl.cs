@@ -35,7 +35,7 @@ public class WinControl : MonoBehaviour
         {
             if(!redcube.GetComponent<cubemovement>().hitspike && !bluecube.GetComponent<cubemovement>().hitspike)
             {
-                if (LastLevel)
+                if (LastLevel && PlayerPrefs.GetInt("UseTimer") == 1)
                 {
                     PlayerPrefs.SetInt("GameComplete", 1);
                 }
@@ -43,9 +43,12 @@ public class WinControl : MonoBehaviour
             }
             
         }
-        PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
-        //if (PlayerPrefs.GetInt("DisplayTimer") == 1)
-        GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = System.Math.Round(PlayerPrefs.GetFloat("CarryOverTime"), 0).ToString();
+        if (PlayerPrefs.GetInt("UseTimer") == 1)
+        {
+            PlayerPrefs.SetFloat("CarryOverTime", PlayerPrefs.GetFloat("CarryOverTime") + Time.deltaTime);
+            GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = System.Math.Round(PlayerPrefs.GetFloat("CarryOverTime"), 0).ToString();
+        }
+        
     }
     private void LateUpdate()
     {

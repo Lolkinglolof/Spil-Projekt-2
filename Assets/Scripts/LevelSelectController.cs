@@ -48,6 +48,7 @@ public class LevelSelectController : MonoBehaviour
                 string HitName = ObjectHit.name;
                 if (HitName.Contains("Level"))
                 {
+                    PlayerPrefs.SetInt("UseTimer", 0);
                     switch (HitName)
                     {
                         case "Level 1":
