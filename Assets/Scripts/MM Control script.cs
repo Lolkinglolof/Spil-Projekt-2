@@ -3,12 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MMControlscript : MonoBehaviour
 {
+    public Canvas canvas;
     public GameObject Object_Hit;
     public Material Green;
     public Material Red;
     public Material Base;
     public string Level;
     public GameObject Prev_Hit;
+    public GameObject LevelSelector;
     Material Mat;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,11 @@ public class MMControlscript : MonoBehaviour
                     case "Quit":
                         Application.Quit();
                         break;
+                    case "LevelSelect":
+                        LevelSelector.transform.position = new Vector3(0,0,-5);
+                        canvas.GetComponent<Canvas>().enabled = false;
+                        break;
+
                 }
             }
         }
