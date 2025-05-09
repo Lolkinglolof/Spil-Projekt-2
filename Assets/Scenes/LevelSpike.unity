@@ -5243,6 +5243,7 @@ MonoBehaviour:
   nextscene: PortalIntro
   FirstLevel: 0
   LastLevel: 0
+  levelnumber: 7
 --- !u!4 &1128813031
 Transform:
   m_ObjectHideFlags: 0

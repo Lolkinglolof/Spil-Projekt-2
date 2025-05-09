@@ -2503,6 +2503,7 @@ MonoBehaviour:
   nextscene: LevelThree
   FirstLevel: 0
   LastLevel: 0
+  levelnumber: 3
 --- !u!4 &1317773297
 Transform:
   m_ObjectHideFlags: 0

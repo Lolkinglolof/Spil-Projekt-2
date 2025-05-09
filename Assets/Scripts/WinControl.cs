@@ -14,9 +14,11 @@ public class WinControl : MonoBehaviour
     public string nextscene;
     public bool FirstLevel;
     public bool LastLevel;
+    public int levelnumber;
     // Start is called before the first frame update
     void Start()
     {
+
         redcube = GameObject.FindWithTag("RedCube");
         bluecube = GameObject.FindWithTag("BlueCube");
         redgoal = GameObject.FindWithTag("RedGoal");
@@ -38,6 +40,12 @@ public class WinControl : MonoBehaviour
                 if (LastLevel && PlayerPrefs.GetInt("UseTimer") == 1)
                 {
                     PlayerPrefs.SetInt("GameComplete", 1);
+                }
+
+                int movementcount = int.Parse(GameObject.FindWithTag("movementcounter").GetComponent<TMP_Text>().text);
+                if (movementcount < PlayerPrefs.GetInt("Level"+levelnumber+"Moves") || PlayerPrefs.GetInt("Level" + levelnumber + "Moves") == 0)
+                {
+                    PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
                 }
                 SceneManager.LoadScene(nextscene);
             }

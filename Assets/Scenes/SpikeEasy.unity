@@ -4802,6 +4802,7 @@ MonoBehaviour:
   nextscene: LevelSpike
   FirstLevel: 0
   LastLevel: 0
+  levelnumber: 6
 --- !u!4 &2134564217
 Transform:
   m_ObjectHideFlags: 0

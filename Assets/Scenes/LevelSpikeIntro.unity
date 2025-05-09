@@ -1589,6 +1589,7 @@ MonoBehaviour:
   nextscene: SpikeEasy
   FirstLevel: 0
   LastLevel: 0
+  levelnumber: 5
 --- !u!4 &707537998
 Transform:
   m_ObjectHideFlags: 0

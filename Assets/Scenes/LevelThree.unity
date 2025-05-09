@@ -794,6 +794,7 @@ MonoBehaviour:
   nextscene: LevelSpikeIntro
   FirstLevel: 0
   LastLevel: 0
+  levelnumber: 4
 --- !u!4 &1089563609
 Transform:
   m_ObjectHideFlags: 0

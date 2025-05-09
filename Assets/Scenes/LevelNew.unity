@@ -3206,6 +3206,7 @@ MonoBehaviour:
   nextscene: Main Menu
   FirstLevel: 0
   LastLevel: 1
+  levelnumber: 9
 --- !u!4 &642929572
 Transform:
   m_ObjectHideFlags: 0
