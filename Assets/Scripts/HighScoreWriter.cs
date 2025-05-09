@@ -9,6 +9,7 @@ public class HighScoreWriter : MonoBehaviour
     int[] LevelMoves = new int[9];
     public GameObject LevelSelectMenu;
     public GameObject highScoreText;
+    int TotalMoves;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +36,17 @@ public class HighScoreWriter : MonoBehaviour
         {
             int u = i + 1;
             LevelMoves[i] = PlayerPrefs.GetInt("Level" + u + "Moves");
+            TotalMoves += LevelMoves[i];
             Debug.Log("Level" + u + "Moves");
             Debug.Log(LevelMoves[i]);
             TextMeshPro Text = LevelSelectMenu.transform.GetChild(i + 2).GetChild(2).GetChild(1).GetComponent<TextMeshPro>();
             Text.text = "Least Moves: " + LevelMoves[i];
             Debug.Log(Text.text.ToString());
+        }
+        if (TotalMoves == 101)
+        {
+            PlayerPrefs.SetInt("SecretUnlocked", 1);
+            Debug.Log("Unlocked");
         }
     }
 

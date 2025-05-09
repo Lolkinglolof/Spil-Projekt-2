@@ -17,12 +17,19 @@ public class LevelSelectController : MonoBehaviour
     public GameObject level7But;
     public GameObject level8But;
     public GameObject level9But;
+    public GameObject secretBut;
     public GameObject ObjectHit;
     public GameObject PrevHit;
+    public GameObject menuScreen;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (PlayerPrefs.GetInt("SecretUnlocked") == 1)
+        {
+            menuScreen.transform.localScale += new Vector3(0,0.1f,0);
+            menuScreen.transform.localPosition -= new Vector3(0,0.05f,0);
+            secretBut.transform.localPosition = new Vector3(0, -0.4f, -2);
+        }
     }
 
     // Update is called once per frame
@@ -78,6 +85,9 @@ public class LevelSelectController : MonoBehaviour
                         case "Level 9":
                             SceneManager.LoadScene("LevelNew");
                             break;
+                        case "Secret":
+                            SceneManager.LoadScene("SecretLevel");
+                            break;
                     }
                 }
                 else if (ObjectHit.tag == "menu")
@@ -93,6 +103,7 @@ public class LevelSelectController : MonoBehaviour
         {
             PrevHit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = purple;
         }
+        
 
     }
 }

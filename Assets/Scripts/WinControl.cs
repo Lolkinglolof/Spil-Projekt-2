@@ -62,7 +62,7 @@ public class WinControl : MonoBehaviour
                         minmove = 7;
                         break;
                     case 6:
-                        minmove = 8;
+                        minmove = 18;
                         break;
                     case 7:
                         minmove = 15;
@@ -71,7 +71,7 @@ public class WinControl : MonoBehaviour
                         minmove = 13;
                         break;
                     case 9:
-                        minmove = 17;
+                        minmove = 15;
                         break;
                     case 10:
                         minmove = 23;
