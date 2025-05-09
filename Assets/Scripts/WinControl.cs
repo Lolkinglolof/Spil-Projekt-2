@@ -79,9 +79,9 @@ public class WinControl : MonoBehaviour
                 }
                 if (movementcount < PlayerPrefs.GetInt("Level"+levelnumber+"Moves") || PlayerPrefs.GetInt("Level" + levelnumber + "Moves") == 0)
                 {
-                    if (minmove > movementcount)
+                    if (minmove > movementcount && PlayerPrefs.GetInt("Level" + levelnumber + "Moves") != 0)
                         movementcount = PlayerPrefs.GetInt("Level" + levelnumber + "Moves");
-                    PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
+                        PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
                 }
                 SceneManager.LoadScene(nextscene);
             }
