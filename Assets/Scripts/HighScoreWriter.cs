@@ -1,6 +1,4 @@
-using System.Linq;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class HighScoreWriter : MonoBehaviour
@@ -25,16 +23,19 @@ public class HighScoreWriter : MonoBehaviour
             }
             GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: " + System.Math.Round(PlayerPrefs.GetFloat("CarryOverTime"), 3).ToString();
             PlayerPrefs.SetInt("GameComplete", 0);
-        } else GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: Invalid";
+        }
+        else GameObject.FindWithTag("Stopwatch").GetComponent<TMP_Text>().text = "Last Time: Invalid";
 
         PlayerPrefs.SetFloat("HighScoreTime", HighScoreTime);
         PlayerPrefs.Save();
-        
+
         highScoreText.GetComponent<TMP_Text>().text = "Best Time: " + System.Math.Round(PlayerPrefs.GetFloat("HighScoreTime"), 3).ToString();
         // IMPORTANT!!!! do not fix the error beneath, it works, i don't know why it says it's wrong... trust me.
         for (int i = 0; i < 9; i++)
         {
-            LevelMoves[i] = PlayerPrefs.GetInt("Level" + i + "Moves");
+            int u = i + 1;
+            LevelMoves[i] = PlayerPrefs.GetInt("Level" + u + "Moves");
+            Debug.Log("Level" + u + "Moves");
             Debug.Log(LevelMoves[i]);
             TextMeshPro Text = LevelSelectMenu.transform.GetChild(i + 2).GetChild(2).GetChild(1).GetComponent<TextMeshPro>();
             Text.text = "Least Moves: " + LevelMoves[i];
@@ -45,6 +46,6 @@ public class HighScoreWriter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
