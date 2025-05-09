@@ -1,4 +1,6 @@
+using System.Linq;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class HighScoreWriter : MonoBehaviour
@@ -6,6 +8,9 @@ public class HighScoreWriter : MonoBehaviour
     float HighScoreTime;
     float CarryOverTime;
     int GameComplete;
+    int[] LevelMoves = new int[9];
+    public GameObject LevelSelectMenu;
+    public GameObject highScoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +30,16 @@ public class HighScoreWriter : MonoBehaviour
         PlayerPrefs.SetFloat("HighScoreTime", HighScoreTime);
         PlayerPrefs.Save();
         
-        GameObject.FindWithTag("HighScore").GetComponent<TMP_Text>().text = "Best Time: " + System.Math.Round(PlayerPrefs.GetFloat("HighScoreTime"), 3).ToString();
+        highScoreText.GetComponent<TMP_Text>().text = "Best Time: " + System.Math.Round(PlayerPrefs.GetFloat("HighScoreTime"), 3).ToString();
+        // IMPORTANT!!!! do not fix the error beneath, it works, i don't know why it says it's wrong... trust me.
+        for (int i = 0; i < 9; i++)
+        {
+            LevelMoves[i] = PlayerPrefs.GetInt("Level" + i + "Moves");
+            Debug.Log(LevelMoves[i]);
+            TextMeshPro Text = LevelSelectMenu.transform.GetChild(i + 2).GetChild(2).GetChild(1).GetComponent<TextMeshPro>();
+            Text.text = "Least Moves: " + LevelMoves[i];
+            Debug.Log(Text.text.ToString());
+        }
     }
 
     // Update is called once per frame

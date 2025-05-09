@@ -43,8 +43,44 @@ public class WinControl : MonoBehaviour
                 }
 
                 int movementcount = int.Parse(GameObject.FindWithTag("movementcounter").GetComponent<TMP_Text>().text);
+                int minmove = 1;
+                switch (levelnumber)
+                {
+                    case 1:
+                        minmove = 5;
+                        break;
+                    case 2:
+                        minmove = 4;
+                        break;
+                    case 3:
+                        minmove = 7;
+                        break;
+                    case 4:
+                        minmove = 17;
+                        break;
+                    case 5:
+                        minmove = 7;
+                        break;
+                    case 6:
+                        minmove = 8;
+                        break;
+                    case 7:
+                        minmove = 15;
+                        break;
+                    case 8:
+                        minmove = 13;
+                        break;
+                    case 9:
+                        minmove = 17;
+                        break;
+                    case 10:
+                        minmove = 23;
+                        break;
+                }
                 if (movementcount < PlayerPrefs.GetInt("Level"+levelnumber+"Moves") || PlayerPrefs.GetInt("Level" + levelnumber + "Moves") == 0)
                 {
+                    if (minmove > movementcount)
+                        movementcount = PlayerPrefs.GetInt("Level" + levelnumber + "Moves");
                     PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
                 }
                 SceneManager.LoadScene(nextscene);

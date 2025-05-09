@@ -32,7 +32,7 @@ public class LevelSelectController : MonoBehaviour
         ObjectHit = Hit.collider.gameObject;
         if (Hit != false && ObjectHit.tag != "restart")
         {
-            if (ObjectHit.tag != "menu" || ObjectHit.tag != "restart")
+            if (ObjectHit.tag != "menu" && ObjectHit.tag != "restart")
             {
                 ObjectHit.transform.GetChild(1).GetComponent<SpriteRenderer>().material = green;
                 PrevHit = ObjectHit;
