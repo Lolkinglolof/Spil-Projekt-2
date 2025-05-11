@@ -79,9 +79,12 @@ public class WinControl : MonoBehaviour
                 }
                 if (movementcount < PlayerPrefs.GetInt("Level"+levelnumber+"Moves") || PlayerPrefs.GetInt("Level" + levelnumber + "Moves") == 0)
                 {
-                    if (minmove > movementcount && PlayerPrefs.GetInt("Level" + levelnumber + "Moves") != 0)
-                        movementcount = PlayerPrefs.GetInt("Level" + levelnumber + "Moves");
-                        PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
+                    /*what exactly is the purpose of this?
+                      it doesn't seem to do anything other than stop me from being able to improve my score beyond what you think is possible
+                      (i have 14 moves on level 7 and 9, and before i commented your code out, it wouldn't register that)/*
+                    /*if (minmove > movementcount && PlayerPrefs.GetInt("Level" + levelnumber + "Moves") != 0)
+                        movementcount = PlayerPrefs.GetInt("Level" + levelnumber + "Moves");*/
+                    PlayerPrefs.SetInt("Level" + levelnumber + "Moves", movementcount);
                 }
                 SceneManager.LoadScene(nextscene);
             }
