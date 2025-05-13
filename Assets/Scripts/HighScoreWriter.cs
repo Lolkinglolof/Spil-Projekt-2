@@ -43,10 +43,14 @@ public class HighScoreWriter : MonoBehaviour
             Text.text = "Least Moves: " + LevelMoves[i];
             Debug.Log(Text.text.ToString());
         }
-        if (TotalMoves <= 98)
+        if (/* TotalMoves <= 98 */ false )
         {
             PlayerPrefs.SetInt("SecretUnlocked", 1);
             Debug.Log("Unlocked");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SecretUnlocked", 0);
         }
     }
 
